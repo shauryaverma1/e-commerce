@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "Full-Featured Flipkart Clone - College Project Edition with Catalog, Filters, Cart, Checkout, and Order Tracking",
   "scripts": {
-    "start": "node scripts/server.js",
-    "build": "echo 'Static assets ready for deployment'"
+    "start": "node scripts/server.js"
   },
   "keywords": [
     "flipkart",
