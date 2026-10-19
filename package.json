@@ -1,0 +1,20 @@
+{
+  "name": "flipkart-clone-project",
+  "version": "1.0.0",
+  "description": "Full-Featured Flipkart Clone - College Project Edition with Catalog, Filters, Cart, Checkout, Order Tracking & Presentation Guide",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "flipkart",
+    "ecommerce",
+    "college-project",
+    "javascript",
+    "cart",
+    "checkout",
+    "order-tracking"
+  ],
+  "author": "College Engineering Student",
+  "license": "MIT"
+}
