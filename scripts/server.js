@@ -3,6 +3,8 @@ const fs = require('fs');
 const path = require('path');
 
 let DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;
+const ROOT_DIR = path.resolve(__dirname, '..');
+
 const MIME_TYPES = {
     '.html': 'text/html; charset=UTF-8',
     '.css': 'text/css; charset=UTF-8',
@@ -25,16 +27,15 @@ const server = http.createServer((req, res) => {
     // Strip query parameters
     reqUrl = reqUrl.split('?')[0];
     const safePath = path.normalize(reqUrl).replace(/^(\.\.[\/\\])+/, '');
-    const filePath = path.join(__dirname, safePath);
+    const filePath = path.join(ROOT_DIR, safePath);
     const ext = path.extname(filePath).toLowerCase();
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
 
     fs.readFile(filePath, (err, content) => {
         if (err) {
             if (err.code === 'ENOENT') {
-                // If it's a SPA route, fallback to index.html
                 if (!ext || ext === '.html') {
-                    fs.readFile(path.join(__dirname, 'index.html'), (spaErr, indexContent) => {
+                    fs.readFile(path.join(ROOT_DIR, 'index.html'), (spaErr, indexContent) => {
                         if (!spaErr) {
                             res.writeHead(200, { 'Content-Type': 'text/html; charset=UTF-8' });
                             res.end(indexContent, 'utf-8');
